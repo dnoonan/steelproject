@@ -29,6 +29,7 @@ class AttachmentsController < ApplicationController
   # POST /attachments.json
   def create
     @attachment = Attachment.new(attachment_params)
+    @attachment.user = current_user
 
     respond_to do |format|
       if @attachment.save
