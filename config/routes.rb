@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   get 'landings/index'
 
+  mount MailsViewer::Engine => '/delivered_mails'
+
+
   resources :artifacts
 
   resources :attachments
