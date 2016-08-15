@@ -55,6 +55,8 @@ gem 'validates_formatting_of'
 group :development do
   gem 'pry-rails'
   gem 'better_errors'
+  gem 'letter_opener'
+  gem 'quiet_assets'
 end
 
 group :development, :test do

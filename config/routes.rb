@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :attachments
 
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords"}, skip: [:sessions, :registrations]
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  
   ActiveAdmin.routes(self)
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
