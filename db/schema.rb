@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815033615) do
+ActiveRecord::Schema.define(version: 20160815143246) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -54,8 +54,10 @@ ActiveRecord::Schema.define(version: 20160815033615) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
+  add_index "artifacts", ["deleted_at"], name: "index_artifacts_on_deleted_at"
   add_index "artifacts", ["user_id"], name: "index_artifacts_on_user_id"
 
   create_table "attachments", force: true do |t|
@@ -65,9 +67,11 @@ ActiveRecord::Schema.define(version: 20160815033615) do
     t.integer  "artifact_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   add_index "attachments", ["artifact_id"], name: "index_attachments_on_artifact_id"
+  add_index "attachments", ["deleted_at"], name: "index_attachments_on_deleted_at"
   add_index "attachments", ["user_id"], name: "index_attachments_on_user_id"
 
   create_table "delayed_jobs", force: true do |t|
@@ -101,8 +105,10 @@ ActiveRecord::Schema.define(version: 20160815033615) do
     t.datetime "updated_at",                             null: false
     t.string   "username"
     t.boolean  "superadmin",             default: false, null: false
+    t.datetime "deleted_at"
   end
 
+  add_index "users", ["deleted_at"], name: "index_users_on_deleted_at"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["username"], name: "index_users_on_username", unique: true
