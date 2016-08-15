@@ -4,6 +4,7 @@ class Attachment < ActiveRecord::Base
 
   acts_as_paranoid
   audited
+  acts_as_taggable_on :tags
 
 
 end

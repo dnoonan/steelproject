@@ -54,6 +54,7 @@ gem 'validates_formatting_of'
 
 gem "paranoia", "~> 2.0"
 gem "audited-activerecord", "~> 4.0"
+gem 'acts-as-taggable-on', '~> 4.0'
 
 
 group :development do

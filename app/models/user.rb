@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   acts_as_paranoid
   audited
-
+  acts_as_taggable_on :department, :team, :tags
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup

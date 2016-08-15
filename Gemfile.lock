@@ -57,6 +57,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (4.0.0)
+      activerecord (>= 4.0)
     addressable (2.4.0)
     arbre (1.1.1)
       activesupport (>= 3.0.0)
@@ -314,6 +316,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  acts-as-taggable-on (~> 4.0)
   audited-activerecord (~> 4.0)
   better_errors
   binding_of_caller
