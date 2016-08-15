@@ -3,12 +3,15 @@ class ArtifactsController < ApplicationController
   #->Prelang (scaffolding:rails/scope_to_user)
   before_filter :require_user_signed_in, only: [:new, :edit, :create, :update, :destroy]
 
+  before_action :set_artifact_type
   before_action :set_artifact, only: [:show, :edit, :update, :destroy]
+
 
   # GET /artifacts
   # GET /artifacts.json
   def index
-    @artifacts = Artifact.all
+    # @artifacts = Artifact.all
+    @artifacts = artifact_class.all
   end
 
   # GET /artifacts/1
@@ -18,7 +21,7 @@ class ArtifactsController < ApplicationController
 
   # GET /artifacts/new
   def new
-    @artifact = Artifact.new
+    @artifact = artifact_class.new
   end
 
   # GET /artifacts/1/edit
@@ -28,7 +31,7 @@ class ArtifactsController < ApplicationController
   # POST /artifacts
   # POST /artifacts.json
   def create
-    @artifact = Artifact.new(artifact_params)
+    @artifact = artifact_class.new(artifact_params)
     @artifact.user = current_user
 
     respond_to do |format|
@@ -67,9 +70,22 @@ class ArtifactsController < ApplicationController
   end
 
   private
+    def set_artifact_type
+      @type = artifact_type
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_artifact
-      @artifact = Artifact.find(params[:id])
+      @type = artifact_type if @type.empty?
+      @artifact = artifact_class.find(params[:id])
+    end
+
+    def artifact_type
+      Artifact.types.include?(params[:type]) ? params[:type] : "Artifact"
+    end
+
+    def artifact_class
+      @type.constantize
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

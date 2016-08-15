@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
 
   resources :artifacts
+  resources :bugs, controller: 'artifacts', type: 'Bug' 
+  resources :features, controller: 'artifacts', type: 'Feature' 
+  resources :user_stories, controller: 'artifacts', type: 'UserStory' 
+  resources :sprints, controller: 'artifacts', type: 'Sprint' 
 
   resources :attachments
 

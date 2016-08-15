@@ -1,0 +1,2 @@
+class Sprint < Artifact
+end

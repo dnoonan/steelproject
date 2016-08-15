@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   has_many :artifacts
   has_many :attachments
 
+  delegate :bugs, :features, :user_stories, :sprints, to: :artifacts
+
+
   acts_as_paranoid
   audited
   acts_as_taggable_on :department, :team, :tags

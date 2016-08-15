@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815144430) do
+ActiveRecord::Schema.define(version: 20160815154238) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -55,6 +55,18 @@ ActiveRecord::Schema.define(version: 20160815144430) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
+    t.string   "severity"
+    t.text     "steps_to_reproduce"
+    t.boolean  "workaround_available"
+    t.string   "need"
+    t.string   "impact"
+    t.boolean  "approved"
+    t.string   "sprint_title"
+    t.date     "start"
+    t.date     "end"
+    t.string   "perspective"
+    t.text     "want"
+    t.text     "so_that"
   end
 
   add_index "artifacts", ["deleted_at"], name: "index_artifacts_on_deleted_at"
