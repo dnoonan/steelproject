@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :attachments
 
   acts_as_paranoid
+  audited
 
 
   def self.find_first_by_auth_conditions(warden_conditions)

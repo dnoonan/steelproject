@@ -3,6 +3,7 @@ class Artifact < ActiveRecord::Base
   has_many :attachments
 
   acts_as_paranoid
+  audited
 
   
 end
