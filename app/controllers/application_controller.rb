@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def authenticate_active_admin_user!
+  def authenticate_admin_user!
     authenticate_user!
     unless current_user.superadmin?
       flash[:alert] = "Unauthorized Access!"
